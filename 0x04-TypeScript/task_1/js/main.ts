@@ -37,4 +37,52 @@ class ImpTeacher implements Teacher {
     }
 }
 
-const teacher = new ImpTeacher("John", "Doe", true, "New York", 10, { contract: true, subject: "Math" });
+//const teacher = new ImpTeacher("John", "Doe", true, "New York", 10, { contract: true, subject: "Math" });
+
+interface Directors extends Teacher {
+  numberOfReports: number;
+}
+
+
+//print teacher
+interface printTeacherFunction {
+    (firstName: string, lastName: string): string;
+}
+
+const printTeacher: printTeacherFunction = (firstName, lastName) => {
+    return `${firstName.charAt(0)}. ${lastName}`;
+};
+
+
+interface StudentConstructor {
+    new (firstName: string, lastName: string): StudentClassInterface;
+}
+
+interface StudentClassInterface {
+    firstName: string;
+    lastName: string;
+    workOnHomework(): string;
+    displayName(): string;
+}
+
+class StudentClass implements StudentClassInterface {
+  public firstName:string
+  public lastName:string
+
+
+  constructor(firstName:string, lastName:string) {
+    this.firstName = firstName
+    this.lastName = lastName
+  }
+
+  workOnHomework():string {
+    return 'Currently working'
+  }
+
+  displayName():string {
+    return this.firstName
+  }
+}
+
+const student: StudentClassInterface = new StudentClass("John", "Doe");
+console.log(student.workOnHomework());
