@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+const url = require('url');
 
 function countStudents(path) {
   return new Promise((resolve, reject) => {
@@ -46,11 +47,12 @@ function countStudents(path) {
 }
 
 const app = http.createServer((req, res) => {
-  if (req.url === '/') {
+  const parsedUrl = url.parse(req.url, true);
+  if (parsedUrl.pathname === '/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('Hello Holberton School!');
   }
-  if (req.url === '/students') {
+  if (parsedUrl.pathname === '/students') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.write('This is the list of our students\n');
     countStudents(process.argv[2])
