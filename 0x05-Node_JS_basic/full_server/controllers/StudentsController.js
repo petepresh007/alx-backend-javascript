@@ -2,7 +2,7 @@ import readDatabase from '../utils.js';
 
 class StudentsController {
   static async getAllStudents(req, res) {
-    readDatabase('database.csv')
+    readDatabase('database.csv' || req.query.database)
       .then((data) => {
         const fields = Object.keys(data)
           .sort((a, b) => a.toLowerCase()
@@ -21,7 +21,7 @@ class StudentsController {
 
   static async getAllStudentsByMajor(req, res) {
     const { major } = req.params;
-    readDatabase('database.csv')
+    readDatabase('database.csv' || req.query.database)
       .then((data) => {
         const fields = Object.keys(data)
           .sort((a, b) => a.toLowerCase()
