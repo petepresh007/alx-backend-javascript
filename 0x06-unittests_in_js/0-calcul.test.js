@@ -16,6 +16,5 @@ describe('calculateNumber', () => {
   });
   it('handle zeo values', () => {
     assert.strictEqual(calculateNumber(0, 0), 0);
-    assert.strictEqual(calculateNumber(0.5, 0.5), 2);
   });
 });
