@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mocha": "^10.7.0"
+    "eslint": "^9.7.0",
+    "mocha": "^10.7.0",
+    "semistandard": "^17.0.0"
   }
 }
